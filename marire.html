@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="infoiasi, web, GraphQL, REST, SOAP">
+    <meta name="author" content="Maniga Ioana">
+    <title>SOAP versus REST versus GraphQL</title>
+</head>
+
+<body style="padding: 70px;">
+    <header>
+        <h1 >SOAP vs REST vd GraphQL</h1><br>
+        <h2>- Studiu comparativ intre manierele SOAP, REST si GraphQl - </h2>
+    </header>
+    <div role="contentinfo" style="font-size:1vw">
+        <section typeof="sa:AuthorsList">
+            <h2>AUTOR</h2>
+            <ul>
+                <li typeof="sa:ContributorRole" property="schema:author">
+                    <span typeof="schema:Person">
+                        <meta property="schema:givenName" content="Ioana">
+                        <meta property="schema:additionalName" content="V.">
+                        <meta property="schema:familyName" content="Maniga">
+                        <span property="schema:name">Ioana V. Maniga</span>
+                    </span>
+                    <ul>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            <a href="mailto:ioana.mna@gmail.com" property="schema:email">ioana.mna@gmail.com</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        
+        </section>
+    </div>
+        <section>
+            <img style="width: 600px; height: 600px;" src="./venn.png" alt="venn-comparative-diagram"/>
+            <h2>Cuprins</h2>
+            <ol role="directory">
+                <li><a href="#soap"><span>1. </span>SOAP</a>
+                    <ol role="directory">
+                        
+                        <li><a href="#soap-def"><span>1.1. </span>Definire</a></li>
+                        <li>
+                            <a href="#soap-transfer"><span>1.2. </span>Transfer de date</a>
+                        </li>
+                        <li><a href="#soap-extindere"><span>1.3. </span>Extindere</a></li>
+                        <li><a href="#soap-securitate"><span>1.4. </span>Securitatea WEB</a></li>
+                    </ol>
+                    </li>
+
+                    <li><a href="#rest"><span>2. </span>REST</a>
+                        <ol role="directory">
+                            
+                            <li><a href="#rest-def"><span>2.1. </span>Definire</a></li>
+                            <li>
+                                <a href="#rest-transfer"><span>2.2. </span>Transfer de date</a>
+                            </li>
+                            <li><a href="#rest-extindere"><span>2.3. </span>Extindere</a></li>
+                            <li><a href="#rest-securitate"><span>2.4. </span>Securitatea WEB</a></li>
+                        </ol>
+                        </li>
+                        
+                        <li><a href="#graphql"><span>3. </span>GraphQL</a>
+                            <ol role="directory">
+                                
+                                <li><a href="#graphql-def"><span>3.1. </span>Definire</a></li>
+                                <li>
+                                    <a href="#graphql-transfer"><span>3.2. </span>Transfer de date</a>
+                                </li>
+                                <li><a href="#graphql-extindere"><span>3.3. </span>Extindere</a></li>
+                                <li><a href="#graphql-securitate"><span>3.4. </span>Securitatea WEB</a></li>
+                            </ol>
+                            </li>
+                            <li><a href="#soa"><span>4. </span>Principiile SOA</a>
+                            <li><a href="#concluzii"><span>1. </span>Concluzii si mai multe comparatii</a>    
+                
+                </ol>
+                
+                
+        </section>
+        <section >
+            <h2 id="soap">SOAP(Simple Object Access Protocol)</h2>
+            <h3 id="soap-def">Definire:</h3>
+            <p>
+                SOAP este un protocol folosit pentru a  schimba  informatii structurate intr-un mediu descentralizat si distribuit. Utilizează tehnologii XML pentru a defini un cadru de mesagerie extensibil care furnizează o construcție de mesaje ce poate fi schimbată pe o varietate de protocoale subiacente. The framework has been designed to be independent of any particular programming model and other implementation specific semantics. Cadrul a fost proiectat să fie independent de orice model de programare particular și de alte semantice specifice implementării.
+           </p>
+           <h3>Un mic exemplu de cod:</h3>
+           <img src="soap.png" alt="soap" style="height: 300px; width: 500px;"/>
+
+           <h4>Concepte Soap</h4>
+           <ul> 
+               <li>
+                Mesaj SOAP -
+                Unitatea de bază de comunicare între nodurile SOAP.</li>
+               <li>Plic SOAP - Cel mai extern element de informatie SOAP</li>
+               <li>
+                Antetul SOAP - 
+                O colecție de zero sau mai multe anteturi SOAP blochează fiecare dintre acestea pentru orice receptor SOAP din calea de mesaj SOAP.</li>
+               <li>SOAP body
+                O colectie de 0 sau mai multe elemente de infor,atie directionate catre un destinatar SOAP catre o cale de mesaj SOAP</li>
+               <li>
+                SOAP fault-
+                Element de informații despre element SOAP care conține informații despre erori generate de un nod SOAP.</li>
+               <li>
+                Expeditor SOAP - 
+                Un nod SOAP care transmite un mesaj SOAP.</li>
+               <li>
+                Receptor SOAP -
+                Un nod SOAP care acceptă un mesaj SOAP.</li>
+               <li>
+                Calea mesajului SOAP - 
+                Setul de noduri SOAP prin care trece un singur mesaj SOAP. Aceasta include expeditorul SOAP inițial, zero sau mai mulți intermediari SOAP și un receptor SOAP final.</li>
+               <li>
+                Intermediarul SOAP -
+                Un intermediar SOAP este atât receptor SOAP, cât și expeditor SOAP și este vizibil din interiorul unui mesaj SOAP. Procesează blocurile de antet SOAP vizați de acesta și acționează pentru a trimite un mesaj SOAP către un receptor SOAP final.</li>
+           </ul>
+            <h3 id="soap-transfer">Transfer de date:</h3>
+            <p>
+            Un mesaj SOAP este specificat ca infoset XML ale cărui comentarii, element, atribut, spațiu de nume și elemente de informații despre caracter pot fi serializate ca XML 1.0. Un mesaj SOAP Infoset constă intr-un document information item cu exact un membru în proprietatea sa [copii], care TREBUIE să fie un element infromation item .
+            SOAP oferă un model de procesare distribuit care presupune că un mesaj SOAP este originar de la un expeditor SOAP inițial și este trimis la un receptor SOAP final prin intermediul a zero sau mai mulți intermediari SOAP.
+            Rețineți că modelul de procesare distribuit SOAP poate suporta mai mulți deputați, inclusiv, fără a se limita la mesaje unidirecționale, interacțiuni cerere / răspuns și conversații de la egal la egal.
+            Modelul de procesare SOAP specifică modul în care un receptor SOAP procesează un mesaj SOAP. Se aplică numai unui singur mesaj, izolat de orice alt mesaj SOAP. Nu menține nicio stare și nu realizează nicio corelație sau coordonare între mesaje, chiar, de exemplu, atunci când este utilizat în combinație cu o caracteristică SOAP care implică trimiterea mai multor mesaje SOAP în secvență, fiecare mesaj ulterior în funcție de răspunsul la mesajul anterior. Este responsabilitatea fiecarei caracteristici sa isi defineasca orice prelucrari combinate. 
+           </p>
+            <h3 id="soap-extindere">Extindere:</h3>
+            <div>       
+            <p>SOAP oferă un cadru de mesagerie simplu a cărui funcționalitate principală este legată de furnizarea de extensibilitate. Mecanismele de extensibilitate descrise mai jos pot fi utilizate pentru a adăuga funcții găsite în medii de mesagerie mai bogate.</p>
+            <p>- Un feature SOAP este o extensie a cadrului de mesagerie SOAP. Deși SOAP nu prezintă restricții cu privire la sfera potențială a unor astfel de funcții, funcțiile de exemplu pot include „fiabilitate”, „securitate”, „corelație”, „rutare” și modele de schimb de mesaje (MEP), cum ar fi cererea / răspunsul, unidirecțional, și conversații de la egal la egal.</p>
+            <p>- Un model de schimb de mesaje (MEP-Message Exchange Pattern ) este un șablon care stabilește un model pentru schimbul de mesaje între nodurile SOAP. MEP-urile sunt un tip de caracteristică și, dacă nu se prevede altfel, referințele din această specificație la termenul „caracteristică” se aplică și în cazul MEP-urilor. MEP pentru cerere-răspuns ilustrează specificația unei funcții MEP.</p>
+            <p>- Termenul "modul SOAP" se referă la specificarea sintaxei și a semanticii unuia sau mai multor blocuri de antet SOAP. Un modul SOAP realizează zero sau mai multe caracteristici SOAP.</p>
+            </div>
+            <h3 id="soap-securitate">Securitatea WEB:</h3>
+            <div>
+                
+            <p>Cadrul de mesagerie SOAP nu oferă în mod direct niciun mecanism pentru a face față controlului accesului, confidențialității, integrității și non-repudierii. Astfel de mecanisme pot fi furnizate ca extensii SOAP folosind modelul de extensibilitate SOAP (vezi 3. Modelul de extensie SOAP). Această secțiune descrie considerațiile de securitate pe care proiectanții și implementatorii trebuie să le ia în considerare la proiectarea și utilizarea acestor mecanisme.</p>
+            <p>- Noduri SOAP:  SOAP poate transporta date definite de aplicație ca blocuri de antet SOAP sau ca conținut corp SOAP. Procesarea unui bloc de antet SOAP poate include abordarea efectelor secundare, cum ar fi modificările de stare, înregistrarea informațiilor sau generarea de mesaje suplimentare. Este recomandat ca, pentru orice scenariu de implementare, numai blocurile de antet SOAP specificate cu atenție, cu implicații de securitate bine înțelese ale oricăror efecte secundare să fie procesate de un nod SOAP.</p>
+            <p>- Intermediari SOAP: SOAP furnizează în mod inerent un model de procesare distribuit care ar putea implica un mesaj SOAP care trece prin mai multe noduri SOAP .Intermediarii SOAP sunt, prin definiție, "men in the middle" și reprezintă o oportunitate pentru "man-in-the-middle attacks". Încălcările de securitate pe sistemele care rulează intermediari SOAP pot duce la grave probleme de securitate și confidențialitate. Un comisionar SOAP compromis sau un intermediar implementat sau configurat fără a ține cont de considerente de securitate și confidențialitate, ar putea fi utilizat în comisia unei game largi de atacuri potențiale.</p>
+            <p>-  Legaturi de protocol de baza: Efectele asupra securității neimplementării unui TREBUIE, sau a face ceva din specificația spune că NU trebuie să fie făcut pot fi foarte subtile. Autorii specificațiilor au datoria să descrie, în detaliu, implicațiile de securitate ale nerespectării recomandărilor sau cerințelor, deoarece majoritatea implementatorilor nu ar putea sa nu benefizieze de experiența și discuțiile care au produs specificația.</p>
+            </div>
+           
+        </section>
+
+        <section >
+
+            <h2 id="rest">REST (Representational State Transfer)</h2>
+            <img src="rest.png" alt="rest"/>
+            <h3 id="rest-def">Definire:</h3>
+            <p>
+                REST ​​este un stil de arhitectura software care definește un set de constrângeri care trebuie utilizate pentru crearea serviciilor Web. Serviciile web care se conformează stilului arhitectural REST, numite RESTful Web Services, asigură interoperabilitatea între sistemele informatice de pe Internet. Serviciile web RESTful permit sistemelor solicitante să acceseze și să manipuleze reprezentările textuale ale resurselor Web prin utilizarea unui set uniform și predefinit de operații stateless. Alte tipuri de servicii Web, cum ar fi serviciile Web SOAP, își expun propriile seturi de operații arbitrare
+
+           </p>
+            <h3 id="rest-transfer">Transfer de date:</h3>
+            <div>
+                <p>Transferul se realizează prin protocolul HTTP. Reprezentarea este modelată conform unui format – e.g., JSON sau XML – șiindicată prin tipuri MIME (media types). Adresabilitatea se rezolvă via URI.</p>
+                <p>- GET: 	descărcarea resursei specificate de pe serverul web pe client; majoritatea cererilor către un server web sunt de acest tip</p>
+                <p>- PUT: 	încărcarea resursei specificate de pe client pe serverul web (cu suprascrierea acesteia, în cazul în care există deja); trebuie specificate și datele de autentificare, utilizatorul respectiv trebuind să aibă permisiunile necesare pentru o astfel de operatie</p>
+                <p>- POST: 	transferul de informații de către client cu privire la resursa specificată, acestea urmând a fi prelucrate de serverul web</p>
+                <p>- DELETE: ștergerea resursei specificate de pe serverul web, rezultatul operației depinzând de permisiunile pe care le deține utilizatorul ale cărui date de autentificare au fost transmise în antete</p>
+            </div>
+            <h3 id="rest-extindere">Extindere:</h3>
+            <div>
+                <p>Constrângerile stilului arhitectural REST afectează următoarele proprietăți arhitecturale:</p>
+                <ul>
+                    <li>
+                        performanța în interacțiuni componente, care poate fi factorul dominant în performanța percepută de utilizator și în eficiența rețelei;</li>
+                    <li> 
+                        scalabilitate permițând suportul unui număr mare de componente și interacțiuni între componente</li>
+                    <li>
+                        
+                        simplitatea unei interfețe uniforme;
+                    </li>
+                    <li> 
+                        modificarea componentelor pentru a răspunde nevoilor în schimbare (chiar și în timp ce aplicația rulează);</li>
+                    <li>
+                        vizibilitatea comunicării între componente de către agenții de servicii
+                    </li>
+                    <li>
+                        fiabilitate în rezistența la defecțiuni la nivel de sistem în prezența defecțiunilor în componente, conectori sau date.</li>
+                </ul>
+
+                <p>
+                    Șase constrângeri de ghidare definesc un sistem RESTful. Aceste constrângeri restricționează modalitățile prin care serverul poate prelucra și răspunde la solicitările clientului</p>
+
+                <ul>
+                    <li>
+                      Arhitectura client-server:  Principiul din spatele constrângerilor client-server este separarea preocupărilor. Separarea preocupărilor interfeței de utilizator de problemele de stocare a datelor îmbunătățește portabilitatea interfețelor utilizatorului pe mai multe platforme. De asemenea, îmbunătățește scalabilitatea prin simplificarea componentelor serverului. 
+                    </li>
+                    <li>
+                        "Statelessness": Comunicarea client-server este restricționată de faptul că niciun context de client nu este stocat pe server între solicitări. Fiecare solicitare de la orice client conține toate informațiile necesare pentru a furniza cererea, iar starea sesiunii este păstrată în client. Starea de sesiune poate fi transferată de server către un alt serviciu, cum ar fi o bază de date, pentru a menține o stare persistentă pentru o perioadă și pentru a permite autentificarea. Clientul începe să trimită cereri atunci când este gata să facă trecerea la o nouă stare.</li>
+                    <li> 
+                        Stocare în memoria cache: Ca și pe World Wide Web, clienții și intermediarii pot memora în cache răspunsuri. Răspunsurile trebuie, implicit sau explicit, să se definească ca fiind cacheabile sau non-cacheabile, pentru a împiedica clienții să furnizeze date rămase sau necorespunzătoare ca răspuns la solicitări suplimentare. Cache-ul bine gestionat elimină parțial sau complet anumite interacțiuni client-server, îmbunătățind în continuare scalabilitatea și performanța.</li>
+                    <li>Sistem stratificat: În mod normal, un client nu poate spune dacă este conectat direct la serverul final sau la un intermediar pe parcurs. Dacă un client proxy sau un echilibru de încărcare este plasat între client și server, acesta nu va afecta comunicările acestora și nu va fi necesară actualizarea codului clientului sau serverului. Serverele intermediare pot îmbunătăți scalabilitatea sistemului, permițând echilibrarea încărcării și oferind memorii cache partajate.</li>
+                    <li>
+                        Cod la cerere (opțional): Serverele pot extinde sau personaliza temporar funcționalitatea unui client prin transferul codului executabil: de exemplu, componente compilate precum applet-uri Java sau scripturi din partea clientului, cum ar fi JavaScript.</li>
+                    <li> 
+                        Interfață uniformă: Restrângerea uniformă a interfeței este fundamentală pentru proiectarea oricărui sistem RESTful. Simplifică și decuplează arhitectura, ceea ce permite fiecărei părți să evolueze independent.</li>
+                </ul>    
+            </div>
+            <h3 id="rest-securitate">Securitatea WEB:</h3>
+            <div>
+                <p>Cele mai bune practici pentru a realiza un serviciu RESTful securizat:</p>
+                <ul>
+                    <li>
+                       Securizarea unui API - exact cât de sigur trebuie să fie. Incercarea de a realiza un sistem de securitate mai complex decat trebuie poate duce la scapari.</li>
+                    <li>Utilizând întotdeauna SSL, datele de autentificare pot fi simplificate la un jeton de acces generat la întâmplare, care este livrat în câmpul de utilizator al HTTP Basic Auth. Va aduce cu sine o mulțime de caracteristici de securitate.
+                         Dacă utilizați HTTP 2, pentru a îmbunătăți performanța - puteți trimite chiar și mai multe solicitări printr-o singură conexiune, astfel veți evita completarea TCP handshake și SSL la cererile ulterioare.</li>
+                    <li>Parolele trebuie să fie întotdeauna făcute pentru a proteja sistemul (sau a reduce la minimum daunele), chiar dacă este compromis în unele încercări de hacking. Există mulți astfel de algoritmi de hashing care se pot dovedi cu adevărat eficienți pentru securitatea parolelor.</li>
+                    <li>Nume de utilizator, parole, jetoane de sesiune și chei API nu ar trebui să apară în adresa URL, deoarece acest lucru poate fi capturat în jurnalele serverului web, ceea ce le face ușor exploatabile.</li>
+                    <li>
+                        Deși autorul de bază este suficient de bun pentru majoritatea API-urilor și dacă este implementat corect, este sigur, este posibil să doriți să luați în considerare și OAuth. Cadrul de autorizare OAuth 2.0 permite unei aplicații terțe să obțină acces limitat la un serviciu HTTP, fie în numele unui proprietar al resurselor, orchestrând o interacțiune de aprobare între proprietarul resursei și serviciul HTTP, fie permițând aplicației terță parte să obține acces în nume propriu.</li>
+                    <li>
+                        Validați parametrii solicitării chiar din primul pas înainte de a ajunge la logica aplicației. Puneți verificări puternice de validare și respingeți imediat cererea dacă nu reușește validarea. În răspunsul API, trimiteți mesaje de eroare relevante și exemplu de format corect de intrare pentru a îmbunătăți experiența utilizatorului.</li>
+                </ul>
+            </div>
+           
+        </section>
+
+        <section >
+            <h2 id="graphql">GraphQL</h2>
+            <h3 id="graphql-def">Definire:</h3>
+            <p>
+                GraphQL este un limbaj de interogare a datelor pentru interfețe de programare a aplicațiilor (API). Această idee este similară cu modul în care se poate interoga o bază de date. Acest limbaj de interogare folosește trimiterea unui obiect JSON (JavaScript Object Notation) ca o solicitare a ceea ce aveți nevoie, prin HTTP, iar după aceea, un răspuns va fi returnat exact ceea ce aveți nevoie, în JSON.           </p>
+            <h3 id="graphql-transfer">Transfer de date:</h3>
+            <p>
+                Preluarea datelor:Obținerea de date este cu siguranță unul dintre cele mai convingătoare avansuri introduse de GraphQL. Într-o API standard REST pentru a obține sau recupera date, am putea solicita să facem solicitări la numeroase endpoint-uri. În comparație, GraphQL oferă un singur endpoint prin care accesăm datele disponibile pe server.
+                Este considerabil mult mai simplu să obțineți mai multe date decât aveți nevoie în REST decât în ​​GraphQL, deoarece fiecare punct final din specificația REST include o formare de date decontată. În mod similar, cu REST, este relativ mai ușor să obțineți setul de date, permițând clienților să facă solicitări suplimentare pentru a obține date relevante.
+           </p>
+           <p>O altă cerință importantă pentru multe aplicații de astăzi este de a avea o conexiune în timp real la server pentru a vă informa imediat despre evenimentele importante. Pentru acest caz de utilizare, GraphQL oferă conceptul de abonamente. Când un client se abonează la un eveniment, acesta va iniția și va ține o conexiune constantă la server. Ori de câte ori se întâmplă acest eveniment anume, serverul împinge datele corespunzătoare către client. Spre deosebire de interogari și mutații care urmează un tipic „ciclu de solicitare-răspuns”, abonamentele reprezintă un flux de date trimise clientului.        </p>
+            <h3 id="graphql-extindere">Extindere:</h3>
+            <ul>
+                <li>- Server GraphQL cu o bază de date conectată: Această arhitectură va fi cea mai comună pentru proiectele "greenfield". În configurare, aveți un singur server (web) care implementează specificația GraphQL. Când o interogare ajunge pe serverul GraphQL, serverul citește sarcina utilă a interogării și prelevează informațiile necesare din baza de date. Aceasta se numește rezolvarea interogării. Apoi construiește obiectul de răspuns așa cum este descris în specificația oficială și îl returnează clientului.</li>
+                <li>-Strat graficQL care integrează sistemele existente: Un alt caz major de utilizare pentru GraphQL este integrarea mai multor sisteme existente în spatele unei API grafice unice, coerente. Acest lucru este deosebit de convingător pentru companiile cu infrastructuri vechi și multe API diferite, care au crescut de-a lungul anilor și care impun acum o povară ridicată de întreținere. O problemă majoră a acestor sisteme moștenite este aceea că fac practic imposibilă construirea de produse inovatoare care au nevoie de acces la mai multe sisteme.
+                    În acest context, GraphQL poate fi utilizat pentru a unifica aceste sisteme existente și pentru a ascunde complexitatea lor în spatele unei API grafice drăguțe. În acest fel, pot fi dezvoltate noi aplicații client care vorbește pur și simplu cu serverul GraphQL pentru a obține datele de care au nevoie. Serverul GraphQL este apoi responsabil pentru preluarea datelor din sistemele existente și pachetarea acestora în formatul de răspuns GraphQL.
+                </li>
+                <li>
+                    -Abordare hibridă cu baza de date conectată și integrarea sistemului existent: În cele din urmă, este posibil să combinați cele două abordări și să construiți un server GraphQL care are o bază de date conectată, dar care încă vorbește cu sisteme moștenite sau terțe.
+                    Când o interogare este primită de server, aceasta o va rezolva și va prelua datele necesare din baza de date conectată sau din unele API-uri integrate.</li>
+            </ul>
+            <p>
+           </p>
+            <h3 id="graphql-securitate">Securitatea WEB:</h3>
+            <div>
+                <p>Puterea pe care o oferă GraphQL vine cu unele noi amenințări la adresa securității. Cea mai comună este interogările adânc imbibate, care au ca rezultat calcule costisitoare și sarcini utile JSON mari, care pot perturba calitatea rețelei sau o pot reduce cu totul.
+                    Modul corect de a vă proteja API-ul de acest tip de atac este de a limita adâncimea interogării, astfel încât interogările adânci sunt blocate înainte de calcularea rezultatului.
+                    Limitarea adâncimii GraphQL oferă o interfață ușoară pentru limitarea profunzimii tuturor interogărilor.
+                    </p>
+                <p>
+                    Încălcări precum fortarea bruta a formularului de log-in pun în pericol toate site-urile și aplicațiile expuse internetului. Atacatorii îți pot afecta mutația de conectare cu e-mailuri și parole care apar în aceste liste până când vor primi răspunsul pe care îl caută.
+                    Din fericire, există o modalitate ușoară pentru de a face acest lucru cu adevărat dificil și lent pentru atacatori, transformandu-te o țintă mai puțin atrăgătoare.
+                    Acest plugin GraphQL - Rate Limit - permite specificarea limitele întrebărilor și mutațiilor în trei moduri diferite, directive personalizate graphql-shield sau cu funcția de limitare a ratei de bază.</p>
+                    <p>Este ușor să credeți că dacă doriți să permiteți unui utilizator să actualizeze o resursă, ar trebui să îi permiteți să specifice ce resursă dorește să actualizeze. Dar ce se întâmplă dacă primesc ID-ul unei resurse pe care nu au privilegii CRUD? Fără nicio protecție din partea serverului, un atacator cu o listă de ID-uri ar fi capabil să actualizeze adresa de e-mail pentru un potențial utilizator. Soluția evidentă aici este adăugarea unui test pentru a vă asigura că ID-ul utilizatorului curent se potrivește cu ID-ul din câmpurile de introducere.
+                    </p> 
+                 <p>
+                    Prin alocarea unui cost fiecărei interogări și specificarea unui cost maxim pentru fiecare interogare, ne putem proteja de atacatorii care execută mai multe interogări costisitoare simultan.
+                    Plug-ul GraphQL Cost Analysis este o modalitate simplă de a specifica costurile și limitele costurilor.</p> 
+                    
+                <p>GraphQL este un instrument extrem de util pentru dezvoltare. Este atât de puternic încât chiar vă va documenta schema, interogările și abonamentele. Aceste informații ar putea fi o mină de aur pentru atacatorii care doresc să găsească exploatări în aplicație.
+                    Plug-ul GraphQL Display Introspection va împiedica schemele să fie scurse în medii cu public. Pur și simplu importați pluginul și aplicați-l la regulile de validare.</p>    
+            </div>
+           
+        </section>
+        <section>
+            <h2 id="soa">SOA (Service Oriented Architecture)</h2>
+            <p>SOA reprezinta un stil arhitectural de proiectare și dezvoltare de aplicații considerate drept servicii care pot fi invocate de alte aplicații. Este o paradigmă de dezvoltare a software-ului care adoptă folosirea de servicii, oferind funcționalități solicitate de utilizatori. Resursele sunt disponibile via o suită de servicii independente ale căror implementări nu trebuie să fie cunoscute.</p>
+            <p>Caracteristici:</p>
+            <ul>
+                <li>Componentele sistemului în ansamblu au un grad mare de independență (de-coupling)</li>
+                <li>Serviciile trebuie proiectate să interacționeze fără a exista dependențe între acestea</li>
+                <li>Serviciile partajează un contract formal-necesitatea unei descrieri formale a serviciului</li>
+                <li>Serviciile pot fi recompuse/orchestrate conform cerințelor sau contextului de exploatare</li>
+                <li>Serviciile pot fi compuse din sub-servicii(composable services) ce pot fi reutilizate (reusable services)</li>
+                <li>Serviciile nu vor depinde de starea comunicării (statelessness) pentru a efectua o procesare, cantitatea de informație ce trebuie reținută trebuie să fie minimală</li>
+            </ul>
+            <h2>Orchestrare:</h2>
+            <p>Orchestrarea presupune existența unui serviciu principal (service orchestrator) care coordonează invocarea altor servicii și preluarea răspunsurilor oferite de acestea</p>
+
+            <h2>Coregrafie:</h2>
+            <p>Coregrafia este o descriere globală a serviciilor autonome participante la o activitate, definind maniera de interschimb de mesaje, reguli de interacțiune (e.g., protocoale) și contracte între două sau mai multe puncte-terminale
+                </p>
+        </section>
+        <section>
+            <h2>Concluzii si mai multe comparatii:
+            </h2>
+            <p>SOAP a fost unul dintre primele protocoale web cele mai utilizate pe scară largă, dar pe măsură ce web-ul mondial a crescut, cu multe solicitări, răspunsuri și evoluția web-ului mobil - veridicitatea și eficiența SOAP nu au fost suficiente pentru o mulțime de aplicații.</p>
+            <p>De-a lungul timpului a venit REST, sperând să rezolve problema prin reprezentarea resurselor în adresele URL. Nu numai că acest lucru a fost mai eficient, dar REST a acceptat și JSON - unul dintre cele mai utilizate obiecte web. </p>
+            <p>Cu toate acestea, boom-ul social media și gigantii precum Facebook nu s-au putut baza doar pe REST. REST are problema supunerii sau excesului. Aceasta înseamnă să obțineți mai multe date sau mai puține date decât este necesar atunci când trimiteți o solicitare. Astfel, Facebook a creat GraphQL! Cu aceasta, clientul definește ce date are nevoie, iar serverul trimite înapoi exact ceea ce a fost solicitat. De asemenea, face acest lucru dintr-un singur punct final - care a fost împrumutat înapoi de la SOAP. Poate chiar prelua date din baze de date diferite cu o singură interogare. Dar, din nou, GraphQL nu poate fi soluția de aur fără compromisuri. GraphQL nu are suport pentru versiune, iar acest lucru nu oferă nicio indicație clară a datelor care sunt depășite sau când se actualizează API-ul. De asemenea, SOAP și GraphQL nu oferă propriile lor mecanisme de cache.
+            </p>   
+            <p>
+                Iată o descriere a comparației dintre toate:</p> 
+            <img src="./tabel.png" style="width: 70; height: 70;" alt="tabel-comparatie"/>    
+
+            <h2>Verdict</h2>
+            <p>Adevarul este ca dintre cele 3, nu ar castiga nici una. Sunt toate inca relevante in ziua de azi. In schimb, ne putem ghida in linii mari in functie de decizia de care avem nevoie:</p>
+            <h3>SOAP</h3>
+            <ul>
+                <li>Soluții Enterprise cu definiție formală a contractului (limbajul de descriere a serviciilor web sau WSDL).
+                </li>
+                <li>
+                    Sisteme vechi care au nevoie de o tehnologie web bine pusă la punct.</li>
+            </ul>
+
+            <h3>REST</h3>
+            <ul>
+                <li>
+                    Este nevoie de flexibilitate cu mai multe formate de solicitare.
+                </li>
+                <li>
+                    Exista sarcini mari în cereri și răspunsuri cu o lățime de bandă limitată.</li>
+                <li> 
+                    Este nevoie un mecanism de cache integrat.</li>    
+            </ul>
+
+            <h3>GraphQl</h3>
+            <ul>
+                <li>
+                    Este necesar să se facă un număr minim de interogari pentru a obține date printr-un punct final web.
+                </li>
+                <li>Datele de răspuns trebuie definite pe partea de client.</li>
+                <li>Nu doriți să faceți față dezavantajelor REST.</li>
+            </ul>
+            <h3>SOAP vresus REST</h3>
+            <img src="soap-vs-rest.png" alt="soap-vs-rest" style="width:500px; height: 200px; margin: 50px;"/>
+            <br />
+            <br />
+            <br />
+            <br />
+            <h3>REST versus GraphQl</h3>
+            <img src="graphql-vs-rest.png" alt="graphql-vs-rest" style="width:500px; height: 200px; margin: 50px;"/>
+        </section>
+<section>
+    <h2 id = "references">Linkuri folosite:</h2>
+    <ul>
+        <li><a href="https://profs.info.uaic.ro/~busaco/teach/courses/web/" target="_top">https://profs.info.uaic.ro/~busaco/teach/courses/web/</a></li>
+        <li><a href="https://www.w3.org/TR/soap12/" target="_top">https://www.w3.org/TR/soap12/</a></li>
+        <li><a href="https://restfulapi.net/security-essentials/" target="_top">https://restfulapi.net/security-essentials/</a></li>
+        <li><a href="https://w3c.github.io/scholarly-html/" target="_top">https://w3c.github.io/scholarly-html/</a></li>
+        <li><a href="https://medium.com/dvt-engineering/" target="_top">https://medium.com/dvt-engineering/</a></li>
+        <li><a href="https://www.howtographql.com/basics/" target="_top">https://www.howtographql.com/basics/</a></li>
+        <li><a href="https://www.thistechnologylife.com/soap-vs-rest/" target="_top">https://www.thistechnologylife.com/soap-vs-rest//</a></li>
+        <li><a href="https://www.apollographql.com/blog/graphql-vs-rest-5d425123e34b" target="_top">https://www.apollographql.com/blog/graphql-vs-rest-5d425123e34b</a></li>
+    </ul>
+</section>
+</body>
+</html>
